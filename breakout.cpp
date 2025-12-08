@@ -7,12 +7,36 @@
 
 #include "raylib.h"
 
+#include <iostream>
+
 void update()
 {
     // TODO
-
-    if (IsKeyPressed(KEY_ESCAPE)) {
+    if (game_state == menu_state) {
+        if (IsKeyPressed(KEY_ENTER)) {
+            game_state = in_game_state;
+        }
+        return;
+    }
+    if (game_state == paused_state) {
+        if (IsKeyPressed(KEY_ENTER)) {
+            game_state = in_game_state;
+        }
+        if (IsKeyPressed(KEY_ESCAPE)) {
+            game_state = menu_state;
+        }
+        return;
+    }
+    if (game_state == victory_state) {
+        if (IsKeyPressed(KEY_ENTER)) {
+            load_level(0);
+            game_state = in_game_state;
+        }
+        return;
+    }
+    if (IsKeyPressed(KEY_E)) {
         game_state = paused_state;
+        draw_pause_menu();
     }
     if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) {
         move_paddle(-paddle_speed);
@@ -33,11 +57,21 @@ void update()
 void draw()
 {
     // TODO
-
-    draw_level();
-    draw_paddle();
-    draw_ball();
-    draw_ui();
+    if (game_state == menu_state) {
+        draw_menu();
+    } else if (game_state == paused_state) {
+        draw_pause_menu();
+    } else if (game_state == victory_state) {
+        draw_victory_menu();
+    } else if (game_state == in_game_state) {
+        draw_level();
+        draw_paddle();
+        draw_ball();
+        draw_ui();
+    } else {
+        std::cout << "Unknown state";
+        return;
+    }
 }
 
 int main()
@@ -54,8 +88,8 @@ int main()
     while (!WindowShouldClose()) {
         BeginDrawing();
 
-        draw();
         update();
+        draw();
 
         EndDrawing();
     }

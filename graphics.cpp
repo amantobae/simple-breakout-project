@@ -191,7 +191,7 @@ void draw_pause_menu()
     ClearBackground(BLACK);
 
     const Text paused_title = {
-        "Press Escape to Resume",
+        "Press Enter to Resume",
         { 0.50f, 0.50f },
         32.0f,
         WHITE,

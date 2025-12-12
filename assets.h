@@ -10,6 +10,7 @@ inline Font menu_font;
 inline Texture2D wall_texture;
 inline Texture2D background_menu_texture;
 inline Texture2D level_background_texture;
+inline Texture2D level2_background_texture;
 inline Texture2D void_texture;
 inline Texture2D paddle_texture;
 inline Texture2D block_texture;

@@ -16,6 +16,7 @@ void load_textures()
 {
     background_menu_texture = LoadTexture("data/images/backgrounds/menu_background.png");
     level_background_texture = LoadTexture("data/images/backgrounds/level_background.png");
+    level2_background_texture = LoadTexture("data/images/backgrounds/level2_background.png");
     wall_texture = LoadTexture("data/images/wall.png");
     void_texture = LoadTexture("data/images/void.png");
     block_texture = LoadTexture("data/images/block.png");
@@ -26,6 +27,7 @@ void load_textures()
 void unload_textures()
 {
     UnloadTexture(level_background_texture);
+    UnloadTexture(level2_background_texture);
     UnloadTexture(background_menu_texture);
     UnloadTexture(wall_texture);
     UnloadTexture(void_texture);

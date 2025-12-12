@@ -107,13 +107,23 @@ void draw_menu()
 
     const Text game_title = {
         "Breakout",
-        { 0.50f, 0.15f },
+        { 0.50f, 0.20f },
         200.0f,
         YELLOW,
         4.0f,
         &menu_font
     };
     draw_text(game_title);
+
+    const Text subtitle = {
+        "In Space",
+        { 0.50f, 0.35f },
+        50.0f,
+        YELLOW,
+        4.0f,
+        &menu_font
+    };
+    draw_text(subtitle);
 
     const Text game_subtitle = {
         "Press Enter to Start",

@@ -14,8 +14,8 @@ void unload_fonts()
 
 void load_textures()
 {
-    background_menu_texture = LoadTexture("data/images/menu_background.png");
-    level_background_texture = LoadTexture("data/images/level_background.png");
+    background_menu_texture = LoadTexture("data/images/backgrounds/menu_background.png");
+    level_background_texture = LoadTexture("data/images/backgrounds/level_background.png");
     wall_texture = LoadTexture("data/images/wall.png");
     void_texture = LoadTexture("data/images/void.png");
     block_texture = LoadTexture("data/images/block.png");

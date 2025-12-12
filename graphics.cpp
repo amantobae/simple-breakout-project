@@ -161,7 +161,13 @@ void draw_ui()
 
 void draw_level()
 {
-    ClearBackground(BLACK);
+    switch (current_level_index) {
+    case 0:
+        draw_image(level_background_texture, 0, 0, screen_size.x, screen_size.y);
+        break;
+    default:
+        ClearBackground(BLACK);
+    }
 
     for (size_t row = 0; row < current_level.rows; ++row) {
         for (size_t column = 0; column < current_level.columns; ++column) {

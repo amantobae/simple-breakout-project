@@ -103,13 +103,13 @@ void derive_graphics_metrics()
 
 void draw_menu()
 {
-    ClearBackground(BLACK);
+    draw_image(background_menu_texture, 0, 0, screen_size.x, screen_size.y);
 
     const Text game_title = {
         "Breakout",
-        { 0.50f, 0.50f },
+        { 0.50f, 0.15f },
         200.0f,
-        RED,
+        YELLOW,
         4.0f,
         &menu_font
     };

@@ -1,6 +1,8 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
+#include <cstdlib>
 
+inline size_t game_frame = 0;
 void derive_graphics_metrics();
 
 void draw_menu();

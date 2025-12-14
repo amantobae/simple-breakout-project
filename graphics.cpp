@@ -203,7 +203,7 @@ void draw_ball()
 {
     const float texture_x_pos = shift_to_center.x + ball_pos.x * cell_size;
     const float texture_y_pos = shift_to_center.y + ball_pos.y * cell_size;
-    draw_sprite(ball_sprite, texture_x_pos, texture_y_pos, cell_size);
+    draw_image(ball_texture, texture_x_pos, texture_y_pos, cell_size);
 }
 
 void draw_pause_menu()

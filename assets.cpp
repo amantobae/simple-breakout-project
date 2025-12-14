@@ -21,7 +21,8 @@ void load_textures()
     void_texture = LoadTexture("data/images/void.png");
     block_texture = LoadTexture("data/images/block.png");
     paddle_texture = LoadTexture("data/images/paddle.png");
-    ball_sprite = load_sprite("data/images/ball/ball", ".png", 8, true, 10);
+    ball_texture = LoadTexture("data/images/ball.png");
+    // ball_sprite = load_sprite("data/images/ball.png", ".png", 1, true, 0);
 }
 
 void unload_textures()
@@ -33,7 +34,8 @@ void unload_textures()
     UnloadTexture(void_texture);
     UnloadTexture(block_texture);
     UnloadTexture(paddle_texture);
-    unload_sprite(ball_sprite);
+    UnloadTexture(ball_texture);
+    // unload_sprite(ball_sprite);
 }
 
 void load_sounds()

@@ -13,6 +13,7 @@ inline Texture2D level_background_texture;
 inline Texture2D level2_background_texture;
 inline Texture2D void_texture;
 inline Texture2D paddle_texture;
+inline Texture2D ball_texture;
 inline Texture2D block_texture;
 
 inline sprite ball_sprite;

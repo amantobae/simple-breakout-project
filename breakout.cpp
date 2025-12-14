@@ -56,7 +56,7 @@ void update()
 
 void draw()
 {
-    // TODO
+    game_frame++;
     if (game_state == menu_state) {
         draw_menu();
     } else if (game_state == paused_state) {

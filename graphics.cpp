@@ -36,8 +36,6 @@ Vector2 shift_to_center;
 Vector2 victory_balls_pos[victory_balls_count];
 Vector2 victory_balls_vel[victory_balls_count];
 
-size_t game_frame = 0;
-
 void draw_image(const Texture2D& image, const float x, const float y, const float width, const float height)
 {
     const Rectangle source = { 0.0f, 0.0f, static_cast<float>(image.width), static_cast<float>(image.height) };
@@ -125,14 +123,17 @@ void draw_menu()
     };
     draw_text(subtitle);
 
+    float offset = std::sin(game_frame * 0.04f) * 0.03f;
+
     const Text game_subtitle = {
         "Press Enter to Start",
-        { 0.50f, 0.65f },
+        { 0.50f, 0.65f + offset },
         32.0f,
         WHITE,
         4.0f,
         &menu_font
     };
+
     draw_text(game_subtitle);
 }
 

@@ -139,15 +139,24 @@ void draw_menu()
 
 void draw_ui()
 {
-    const Text level_counter = {
-        "LEVEL " + std::to_string(current_level_index + 1) + " OUT OF " + std::to_string(level_count),
-        { 0.5f, 0.0375f },
+    const Text level_counter1 = {
+        "LEVEL " + std::to_string(current_level_index + 1),
+        { 0.90f, 0.0375f },
         48.0f,
         WHITE,
         4.0f,
         &menu_font
     };
-    draw_text(level_counter);
+    const Text level_counter2 = {
+        "OUT OF " + std::to_string(level_count),
+        { 0.90f, 0.08f },
+        48.0f,
+        WHITE,
+        4.0f,
+        &menu_font
+    };
+    draw_text(level_counter1);
+    draw_text(level_counter2);
 
     const Text boxes_remaining = {
         "BLOCKS " + std::to_string(current_level_blocks),

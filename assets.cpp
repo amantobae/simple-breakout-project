@@ -4,7 +4,7 @@
 
 void load_fonts()
 {
-    menu_font = LoadFontEx("data/fonts/ARCADECLASSIC.TTF", 256, nullptr, 0);
+    menu_font = LoadFontEx("data/fonts/LCDSolid1.13-Regular.TTF", 256, nullptr, 0);
 }
 
 void unload_fonts()

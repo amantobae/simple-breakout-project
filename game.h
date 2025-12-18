@@ -3,6 +3,8 @@
 
 #include <cstddef>
 
+inline bool music_initialized = false;
+
 constexpr char VOID = ' ';
 constexpr char WALL = '#';
 constexpr char BLOCKS = '@';

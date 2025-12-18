@@ -17,6 +17,9 @@ void load_textures()
     background_menu_texture = LoadTexture("data/images/backgrounds/menu_background.png");
     level_background_texture = LoadTexture("data/images/backgrounds/level_background.png");
     level2_background_texture = LoadTexture("data/images/backgrounds/level2_background.png");
+    level3_background_texture = LoadTexture("data/images/backgrounds/level3_background.png");
+    level4_background_texture = LoadTexture("data/images/backgrounds/level4_background.png");
+    level5_background_texture = LoadTexture("data/images/backgrounds/level5_background.png");
     wall_texture = LoadTexture("data/images/wall.png");
     void_texture = LoadTexture("data/images/void.png");
     block_texture = LoadTexture("data/images/block.png");

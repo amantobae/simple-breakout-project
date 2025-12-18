@@ -41,6 +41,7 @@ void unload_textures()
 void load_sounds()
 {
     InitAudioDevice();
+    theme_song = LoadSound("data/sounds/song.mp3");
     win_sound = LoadSound("data/sounds/win.wav");
     lose_sound = LoadSound("data/sounds/lose.wav");
 }

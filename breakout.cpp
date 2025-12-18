@@ -11,7 +11,8 @@
 
 void update()
 {
-    // TODO
+    UpdateMusicStream(theme_song);
+
     if (game_state == menu_state) {
         if (IsKeyPressed(KEY_ENTER)) {
             game_state = in_game_state;

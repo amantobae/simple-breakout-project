@@ -22,7 +22,6 @@ void load_textures()
     block_texture = LoadTexture("data/images/block.png");
     paddle_texture = LoadTexture("data/images/paddle.png");
     ball_texture = LoadTexture("data/images/ball.png");
-    // ball_sprite = load_sprite("data/images/ball.png", ".png", 1, true, 0);
 }
 
 void unload_textures()
@@ -35,19 +34,23 @@ void unload_textures()
     UnloadTexture(block_texture);
     UnloadTexture(paddle_texture);
     UnloadTexture(ball_texture);
-    // unload_sprite(ball_sprite);
 }
 
 void load_sounds()
 {
     InitAudioDevice();
-    theme_song = LoadSound("data/sounds/song.mp3");
+    theme_song = LoadMusicStream("data/sounds/song.mp3");
+    theme_song.looping = true;
+    SetMusicVolume(theme_song, 0.5f);
+    PlayMusicStream(theme_song);
+
     win_sound = LoadSound("data/sounds/win.wav");
     lose_sound = LoadSound("data/sounds/lose.wav");
 }
 
 void unload_sounds()
 {
+    UnloadMusicStream(theme_song);
     UnloadSound(win_sound);
     UnloadSound(lose_sound);
     CloseAudioDevice();

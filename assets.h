@@ -18,7 +18,7 @@ inline Texture2D block_texture;
 
 inline sprite ball_sprite;
 
-inline Sound theme_song;
+inline Music theme_song;
 inline Sound win_sound;
 inline Sound lose_sound;
 

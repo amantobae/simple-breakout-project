@@ -29,6 +29,15 @@ void update()
         }
         return;
     }
+    if (game_state == game_over_state) {
+        if (IsKeyPressed(KEY_ENTER)) {
+            game_state = in_game_state;
+        }
+        if (IsKeyPressed(KEY_ESCAPE)) {
+            game_state = menu_state;
+        }
+        return;
+    }
     if (game_state == victory_state) {
         if (IsKeyPressed(KEY_ENTER)) {
             player_lives = max_lives;
@@ -75,6 +84,8 @@ void draw()
         draw_pause_menu();
     } else if (game_state == victory_state) {
         draw_victory_menu();
+    } else if (game_state == game_over_state) {
+        draw_game_over();
     } else if (game_state == in_game_state) {
         draw_level();
         draw_paddle();

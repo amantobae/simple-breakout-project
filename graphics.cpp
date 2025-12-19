@@ -319,7 +319,7 @@ void draw_game_over()
         "GAME OVER",
         { 0.50f, 0.30f },
         200.0f,
-        YELLOW,
+        RED,
         4.0f,
         &menu_font
     };

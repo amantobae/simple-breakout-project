@@ -61,7 +61,6 @@ void move_ball()
         if (player_lives > 3) {
             player_lives = 3;
         }
-        --current_level_blocks;
 
     } else if (is_colliding_with_level_cell(next_ball_pos, ball_size, BLOCKS)) {
         char& temp = get_colliding_level_cell(next_ball_pos, ball_size, BLOCKS);

@@ -104,7 +104,7 @@ void draw_menu()
     draw_image(background_menu_texture, 0, 0, screen_size.x, screen_size.y);
 
     const Text game_title = {
-        "Breakout",
+        "BREAKOUT",
         { 0.50f, 0.20f },
         200.0f,
         YELLOW,

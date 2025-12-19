@@ -308,4 +308,39 @@ void draw_victory_menu()
     draw_text(victory_subtitle);
 }
 
-void draw_game_over() { }
+void draw_game_over()
+{
+    ClearBackground(BLACK);
+
+    const Text game_title = {
+        "GAME OVER",
+        { 0.50f, 0.30f },
+        200.0f,
+        YELLOW,
+        4.0f,
+        &menu_font
+    };
+    draw_text(game_title);
+
+    const Text option1 = {
+        "Return To Main Menu",
+        { 0.50f, 0.65f },
+        50.0f,
+        WHITE,
+        4.0f,
+        &menu_font
+    };
+    draw_text(option1);
+
+
+    const Text option2 = {
+        "Retry",
+        { 0.50f, 0.50f },
+        50.0f,
+        WHITE,
+        4.0f,
+        &menu_font
+    };
+    draw_text(option2);
+
+}

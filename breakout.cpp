@@ -53,7 +53,7 @@ void update()
         if (player_lives <= 0) {
             player_lives = max_lives;
             load_level(0);
-            game_state = menu_state;
+            game_state = game_over_state;
             PlaySound(lose_sound);
         } else {
             load_level();

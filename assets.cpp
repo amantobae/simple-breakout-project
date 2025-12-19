@@ -15,6 +15,7 @@ void unload_fonts()
 void load_textures()
 {
     background_menu_texture = LoadTexture("data/images/backgrounds/menu_background.png");
+    game_over_background_texture = LoadTexture("data/images/backgrounds/game_over_background.png");
     level_background_texture = LoadTexture("data/images/backgrounds/level_background.png");
     level2_background_texture = LoadTexture("data/images/backgrounds/level2_background.png");
     level3_background_texture = LoadTexture("data/images/backgrounds/level3_background.png");
@@ -33,6 +34,9 @@ void unload_textures()
 {
     UnloadTexture(level_background_texture);
     UnloadTexture(level2_background_texture);
+    UnloadTexture(level3_background_texture);
+    UnloadTexture(level4_background_texture);
+    UnloadTexture(level5_background_texture);
     UnloadTexture(background_menu_texture);
     UnloadTexture(wall_texture);
     UnloadTexture(void_texture);
@@ -41,6 +45,7 @@ void unload_textures()
     UnloadTexture(ball_texture);
     UnloadTexture(heart_texture);
     UnloadTexture(heart_block_texture);
+    UnloadTexture(game_over_background_texture);
 }
 
 void load_sounds()

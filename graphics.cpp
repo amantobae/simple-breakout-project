@@ -313,7 +313,7 @@ void draw_victory_menu()
 
 void draw_game_over()
 {
-    ClearBackground(BLACK);
+    draw_image(game_over_background_texture, 0, 0, screen_size.x, screen_size.y);
 
     const Text game_title = {
         "GAME OVER",

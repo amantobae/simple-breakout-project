@@ -9,6 +9,7 @@ inline Font menu_font;
 
 inline Texture2D wall_texture;
 inline Texture2D background_menu_texture;
+inline Texture2D game_over_background_texture;
 inline Texture2D level_background_texture;
 inline Texture2D level2_background_texture;
 inline Texture2D level3_background_texture;

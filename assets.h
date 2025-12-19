@@ -18,6 +18,7 @@ inline Texture2D void_texture;
 inline Texture2D paddle_texture;
 inline Texture2D ball_texture;
 inline Texture2D block_texture;
+inline Texture2D heart_texture;
 
 inline sprite ball_sprite;
 

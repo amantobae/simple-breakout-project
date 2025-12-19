@@ -32,15 +32,37 @@ void move_ball()
         ball_pos.y + ball_vel.y
     };
 
-    if (is_colliding_with_level_cell(next_ball_pos, ball_size, WALL)) {
-        if (is_colliding_with_level_cell({ next_ball_pos.x, ball_pos.y }, ball_size, WALL)) {
+    if (is_colliding_with_level_cell(next_ball_pos, ball_size, WALL) || is_colliding_with_level_cell(next_ball_pos, ball_size, BOUNDARY)) {
+
+        if (is_colliding_with_level_cell({ next_ball_pos.x, ball_pos.y }, ball_size, WALL) || is_colliding_with_level_cell({ next_ball_pos.x, ball_pos.y }, ball_size, BOUNDARY)) {
             ball_vel.x = -ball_vel.x;
             next_ball_pos.x = std::round(next_ball_pos.x);
         }
-        if (is_colliding_with_level_cell({ ball_pos.x, next_ball_pos.y }, ball_size, WALL)) {
+        if (is_colliding_with_level_cell({ ball_pos.x, next_ball_pos.y }, ball_size, WALL) || is_colliding_with_level_cell({ ball_pos.x, next_ball_pos.y }, ball_size, BOUNDARY)) {
             ball_vel.y = -ball_vel.y;
             next_ball_pos.y = std::round(next_ball_pos.y);
         }
+    }
+
+    else if (is_colliding_with_level_cell(next_ball_pos, ball_size, HEART_BLOCK)) {
+        char& temp = get_colliding_level_cell(next_ball_pos, ball_size, HEART_BLOCK);
+
+        if (is_colliding_with_level_cell({ next_ball_pos.x, ball_pos.y }, ball_size, HEART_BLOCK)) {
+            ball_vel.x = -ball_vel.x;
+            next_ball_pos.x = std::round(next_ball_pos.x);
+        }
+        if (is_colliding_with_level_cell({ ball_pos.x, next_ball_pos.y }, ball_size, HEART_BLOCK)) {
+            ball_vel.y = -ball_vel.y;
+            next_ball_pos.y = std::round(next_ball_pos.y);
+        }
+
+        temp = VOID;
+        ++player_lives;
+        if (player_lives > 3) {
+            player_lives = 3;
+        }
+        --current_level_blocks;
+
     } else if (is_colliding_with_level_cell(next_ball_pos, ball_size, BLOCKS)) {
         char& temp = get_colliding_level_cell(next_ball_pos, ball_size, BLOCKS);
 

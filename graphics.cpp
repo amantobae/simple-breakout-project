@@ -215,6 +215,9 @@ void draw_level()
             case BLOCKS:
                 draw_image(block_texture, texture_x_pos, texture_y_pos, cell_size);
                 break;
+            case HEART_BLOCK:
+                draw_image(heart_block_texture, texture_x_pos, texture_y_pos, cell_size);
+                break;
             default:;
             }
         }

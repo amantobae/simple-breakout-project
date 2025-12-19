@@ -14,6 +14,7 @@ constexpr char BLOCKS = '@';
 constexpr char PADDLE = 'P';
 constexpr char BOUNDARY = '!';
 constexpr char BALL = '*';
+constexpr char HEART_BLOCK = 'H';
 
 struct level {
     size_t rows = 0, columns = 0;
@@ -32,7 +33,7 @@ inline char level_1_data[] = {
     '#', '#', '#', '#', '#', '#', '#', '#', '#',
     '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
     '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
-    '#', ' ', '@', '@', '@', '@', '@', ' ', '#',
+    '#', ' ', '@', '@', 'H', '@', '@', ' ', '#',
     '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
     '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
     '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',

@@ -5,6 +5,9 @@
 
 inline bool music_initialized = false;
 
+inline int player_lives = 3;
+inline constexpr int max_lives = 3;
+
 constexpr char VOID = ' ';
 constexpr char WALL = '#';
 constexpr char BLOCKS = '@';

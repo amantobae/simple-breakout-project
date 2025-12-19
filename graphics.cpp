@@ -297,3 +297,5 @@ void draw_victory_menu()
     };
     draw_text(victory_subtitle);
 }
+
+void draw_game_over() { }

@@ -168,16 +168,6 @@ void draw_ui()
     };
     draw_text(boxes_remaining);
 
-    // const Text lives_counter = {
-    //     "LIVES " + std::to_string(player_lives),
-    //     { 0.15f, 0.0375f },
-    //     48.0f,
-    //     RED,
-    //     4.0f,
-    //     &menu_font
-    // };
-    // draw_text(lives_counter);
-
     const float heart_size = 50.0f;
     const float heart_spacing = 10.0f;
     const float hearts_start_x = 20.0f;

@@ -13,5 +13,6 @@ void draw_ball();
 void draw_pause_menu();
 void init_victory_menu();
 void draw_victory_menu();
+void draw_game_over();
 
 #endif // GRAPHICS_H

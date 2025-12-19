@@ -15,6 +15,7 @@ void update()
 
     if (game_state == menu_state) {
         if (IsKeyPressed(KEY_ENTER)) {
+            player_lives = max_lives;
             game_state = in_game_state;
         }
         return;
@@ -30,6 +31,7 @@ void update()
     }
     if (game_state == victory_state) {
         if (IsKeyPressed(KEY_ENTER)) {
+            player_lives = max_lives;
             load_level(0);
             game_state = in_game_state;
         }
@@ -47,8 +49,17 @@ void update()
     }
     move_ball();
     if (!is_ball_inside_level()) {
-        load_level();
-        PlaySound(lose_sound);
+        --player_lives;
+        if (player_lives <= 0) {
+            player_lives = max_lives;
+            load_level(0);
+            game_state = menu_state;
+            PlaySound(lose_sound);
+        } else {
+            load_level();
+            PlaySound(lose_sound);
+        }
+
     } else if (current_level_blocks == 0) {
         load_level(1);
         PlaySound(win_sound);

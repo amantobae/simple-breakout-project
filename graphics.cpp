@@ -168,15 +168,25 @@ void draw_ui()
     };
     draw_text(boxes_remaining);
 
-    const Text lives_counter = {
-        "LIVES " + std::to_string(player_lives),
-        { 0.15f, 0.0375f },
-        48.0f,
-        RED,
-        4.0f,
-        &menu_font
-    };
-    draw_text(lives_counter);
+    // const Text lives_counter = {
+    //     "LIVES " + std::to_string(player_lives),
+    //     { 0.15f, 0.0375f },
+    //     48.0f,
+    //     RED,
+    //     4.0f,
+    //     &menu_font
+    // };
+    // draw_text(lives_counter);
+
+    const float heart_size = 50.0f;
+    const float heart_spacing = 10.0f;
+    const float hearts_start_x = 20.0f;
+    const float hearts_y = 20.0f;
+
+    for (int i = 0; i < player_lives; i++) {
+        float x = hearts_start_x + i * (heart_size + heart_spacing);
+        draw_image(heart_texture, x, hearts_y, heart_size);
+    }
 }
 
 void draw_level()
@@ -332,7 +342,6 @@ void draw_game_over()
     };
     draw_text(option1);
 
-
     const Text option2 = {
         "Retry",
         { 0.50f, 0.50f },
@@ -342,5 +351,4 @@ void draw_game_over()
         &menu_font
     };
     draw_text(option2);
-
 }

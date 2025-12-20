@@ -23,18 +23,11 @@ struct Text {
 constexpr float cell_scale = 0.6f;
 constexpr float screen_scale_divisor = 700.0f;
 
-constexpr size_t victory_ball_launch_degree_offset = 3;
-constexpr size_t victory_balls_count = 360 / victory_ball_launch_degree_offset;
-constexpr float victory_balls_speed = 7.0f;
-constexpr float victory_balls_size = 3.0f;
 
 Vector2 screen_size;
 float screen_scale;
 float cell_size;
 Vector2 shift_to_center;
-
-Vector2 victory_balls_pos[victory_balls_count];
-Vector2 victory_balls_vel[victory_balls_count];
 
 void draw_image(const Texture2D& image, const float x, const float y, const float width, const float height)
 {
@@ -198,13 +191,6 @@ void draw_portals()
             texture_y_pos + cell_size / 2,
             portal_size / 2,
             WHITE);
-        DrawTextEx(
-            menu_font,
-            "A",
-            { texture_x_pos + cell_size / 4, texture_y_pos + cell_size / 4 },
-            cell_size / 2,
-            0,
-            WHITE);
     }
 
     if (portal2_active) {
@@ -223,13 +209,6 @@ void draw_portals()
             texture_x_pos + cell_size / 2,
             texture_y_pos + cell_size / 2,
             portal_size / 2,
-            WHITE);
-        DrawTextEx(
-            menu_font,
-            "B",
-            { texture_x_pos + cell_size / 4, texture_y_pos + cell_size / 4 },
-            cell_size / 2,
-            0,
             WHITE);
     }
 }

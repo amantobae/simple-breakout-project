@@ -30,6 +30,8 @@ void load_textures()
     heart_texture = LoadTexture("data/images/heart.png");
     heart_block_texture = LoadTexture("data/images/heart_block.png");
     multi_ball_texture = LoadTexture("data/images/multi_ball.png");
+    portal1_texture = LoadTexture("data/images/portal1.png");
+    portal2_texture = LoadTexture("data/images/portal2.png");
 }
 
 void unload_textures()
@@ -50,6 +52,8 @@ void unload_textures()
     UnloadTexture(heart_block_texture);
     UnloadTexture(game_over_background_texture);
     UnloadTexture(multi_ball_texture);
+    UnloadTexture(portal1_texture);
+    UnloadTexture(portal2_texture);
 }
 
 void load_sounds()

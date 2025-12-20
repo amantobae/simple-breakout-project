@@ -81,6 +81,7 @@ void update()
             game_state = victory_state;
             StopMusicStream(theme_song);
             PlaySound(victory_sound);
+            init_victory_menu();
         } else {
             load_level(1);
             PlaySound(win_sound);

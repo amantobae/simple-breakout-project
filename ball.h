@@ -3,15 +3,23 @@
 
 #include "raylib.h"
 
-inline constexpr float ball_launch_vel_mag = 0.15f;
-inline constexpr float ball_launch_angle_degrees = 49.6f;
-inline constexpr Vector2 ball_size = { 1.0f, 1.0f };
+struct Ball {
+    Vector2 pos;
+    Vector2 vel;
+    bool active;
+};
 
-inline Vector2 ball_pos;
-inline Vector2 ball_vel;
+constexpr float ball_launch_angle_degrees = 45.0f;
+constexpr float ball_launch_vel_mag = 0.14f;
+constexpr int max_balls = 10;
+
+inline Vector2 ball_size = { 1.0f, 1.0f };
+inline Ball balls[max_balls];
+inline int active_balls_count = 0;
 
 void spawn_ball();
-void move_ball();
-bool is_ball_inside_level();
+void move_balls();
+bool is_any_ball_inside_level();
+void add_ball(Vector2 position);
 
-#endif // BALL_H
+#endif

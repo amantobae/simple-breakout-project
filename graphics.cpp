@@ -325,30 +325,48 @@ void draw_pause_menu()
     draw_text(paused_title);
 }
 
+struct Confetti {
+    Vector2 pos;
+    Vector2 vel;
+    float rotation;
+    float rotation_speed;
+    Color color;
+    bool active;
+};
+
+constexpr int max_confetti = 100;
+inline Confetti confetti[max_confetti];
+
 void init_victory_menu()
 {
-    for (size_t i = 0; i < victory_balls_count; ++i) {
-        victory_balls_pos[i] = { screen_size.x / 2, screen_size.y / 2 };
-        victory_balls_vel[i] = {
-            std::cos(static_cast<float>(i * victory_ball_launch_degree_offset)) * victory_balls_speed,
-            std::sin(static_cast<float>(i * victory_ball_launch_degree_offset)) * victory_balls_speed
-        };
+    for (int i = 0; i < max_confetti; i++) {
+        confetti[i].pos.x = rand() % (int)screen_size.x;
+        confetti[i].pos.y = -50.0f - rand() % 200;
+        confetti[i].vel.x = -2.0f + (rand() % 40) / 10.0f;
+        confetti[i].vel.y = 2.0f + (rand() % 30) / 10.0f;
+        confetti[i].rotation = 0;
+        confetti[i].rotation_speed = -0.1f + (rand() % 20) / 100.0f;
+
+        Color colors[] = { RED, YELLOW, BLUE, GREEN, PURPLE, PINK, ORANGE };
+        confetti[i].color = colors[rand() % 7];
+        confetti[i].active = true;
     }
 }
 
 void animate_victory_menu()
 {
-    for (size_t i = 0; i < victory_balls_count; ++i) {
-        if (victory_balls_pos[i].x + victory_balls_vel[i].x > screen_size.x || victory_balls_pos[i].x + victory_balls_vel[i].x < 0) {
-            victory_balls_vel[i].x *= -1.0f;
+    for (int i = 0; i < max_confetti; i++) {
+        if (!confetti[i].active)
+            continue;
+
+        confetti[i].pos.x += confetti[i].vel.x;
+        confetti[i].pos.y += confetti[i].vel.y;
+        confetti[i].rotation += confetti[i].rotation_speed;
+
+        if (confetti[i].pos.y > screen_size.y + 50) {
+            confetti[i].pos.y = -50;
+            confetti[i].pos.x = rand() % static_cast<int>(screen_size.x);
         }
-        if (victory_balls_pos[i].y + victory_balls_vel[i].y > screen_size.y || victory_balls_pos[i].y + victory_balls_vel[i].y < 0) {
-            victory_balls_vel[i].y *= -1.0f;
-        }
-        victory_balls_pos[i] = {
-            victory_balls_pos[i].x + victory_balls_vel[i].x,
-            victory_balls_pos[i].y + victory_balls_vel[i].y
-        };
     }
 }
 
@@ -356,26 +374,40 @@ void draw_victory_menu()
 {
     animate_victory_menu();
 
-    DrawRectangleV({ 0.0f, 0.0f }, { screen_size.x, screen_size.y }, { 0, 0, 0, 50 });
+    DrawRectangleV({ 0.0f, 0.0f }, { screen_size.x, screen_size.y }, { 10, 10, 30, 255 });
 
-    for (const auto& [x, y] : victory_balls_pos) {
-        DrawCircleV({ x, y }, victory_balls_size, WHITE);
+    for (int i = 0; i < max_confetti; i++) {
+        if (!confetti[i].active)
+            continue;
+
+        float size = 8.0f;
+        Vector2 p1 = {
+            confetti[i].pos.x + std::cos(confetti[i].rotation) * size,
+            confetti[i].pos.y + std::sin(confetti[i].rotation) * size
+        };
+        Vector2 p2 = {
+            confetti[i].pos.x - std::cos(confetti[i].rotation) * size,
+            confetti[i].pos.y - std::sin(confetti[i].rotation) * size
+        };
+
+        DrawLineEx(p1, p2, 3.0f, confetti[i].color);
     }
 
     const Text victory_title = {
-        "Victory!",
-        { 0.50f, 0.50f },
-        100.0f,
-        RED,
+        "VICTORY!",
+        { 0.50f, 0.35f },
+        150.0f,
+        GOLD,
         4.0f,
         &menu_font
     };
     draw_text(victory_title);
 
+    float offset = std::sin(game_frame * 0.04f) * 0.03f;
     const Text victory_subtitle = {
         "Press Enter to Restart",
-        { 0.50f, 0.65f },
-        32.0f,
+        { 0.50f, 0.55f + offset },
+        40.0f,
         WHITE,
         4.0f,
         &menu_font

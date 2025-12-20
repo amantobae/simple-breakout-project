@@ -9,10 +9,13 @@
 #include <cmath>
 #include <numbers>
 
+inline float teleport_cooldown[max_balls] = {0};
+
 void spawn_ball()
 {
     for (int i = 0; i < max_balls; i++) {
         balls[i].active = false;
+        teleport_cooldown[i] = 0.0f;
     }
     active_balls_count = 0;
 
@@ -44,6 +47,7 @@ void add_ball(Vector2 position)
         if (!balls[i].active) {
             balls[i].pos = position;
             balls[i].active = true;
+            teleport_cooldown[i] = 0.0f;
 
             constexpr float angle_45_radians = 45.0f * (std::numbers::pi_v<float> / 180.0f);
             balls[i].vel.y = -ball_launch_vel_mag * std::sin(angle_45_radians);
@@ -64,10 +68,50 @@ void move_balls()
         if (!balls[i].active)
             continue;
 
+        if (teleport_cooldown[i] > 0) {
+            teleport_cooldown[i] -= GetFrameTime();
+        }
+
         Vector2 next_ball_pos = {
             balls[i].pos.x + balls[i].vel.x,
             balls[i].pos.y + balls[i].vel.y
         };
+
+        if (portal1_active && portal2_active && teleport_cooldown[i] <= 0) {
+            float portal_radius = 0.4f;
+
+            if (CheckCollisionCircles(
+                {balls[i].pos.x + 0.5f, balls[i].pos.y + 0.5f},
+                ball_size.x / 2.0f,
+                {portal1_position.x + 0.5f, portal1_position.y + 0.5f},
+                portal_radius
+            )) {
+                balls[i].pos = portal2_position;
+
+                balls[i].pos.x += 0.1f;
+                balls[i].pos.y += 0.1f;
+
+                teleport_cooldown[i] = 0.3f;
+
+                continue;
+            }
+
+            if (CheckCollisionCircles(
+                {balls[i].pos.x + 0.5f, balls[i].pos.y + 0.5f},
+                ball_size.x / 2.0f,
+                {portal2_position.x + 0.5f, portal2_position.y + 0.5f},
+                portal_radius
+            )) {
+                balls[i].pos = portal1_position;
+
+                balls[i].pos.x += 0.1f;
+                balls[i].pos.y += 0.1f;
+
+                teleport_cooldown[i] = 0.3f;
+
+                continue;
+            }
+        }
 
         if (is_colliding_with_level_cell(next_ball_pos, ball_size, WALL) || is_colliding_with_level_cell(next_ball_pos, ball_size, BOUNDARY)) {
 

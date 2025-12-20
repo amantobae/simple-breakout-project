@@ -9,7 +9,7 @@ void draw_menu();
 void draw_ui();
 void draw_level();
 void draw_paddle();
-void draw_ball();
+void draw_balls();
 void draw_pause_menu();
 void init_victory_menu();
 void draw_victory_menu();

@@ -15,6 +15,7 @@ inline Texture2D level2_background_texture;
 inline Texture2D level3_background_texture;
 inline Texture2D level4_background_texture;
 inline Texture2D level5_background_texture;
+inline Texture2D level6_background_texture;
 inline Texture2D void_texture;
 inline Texture2D paddle_texture;
 inline Texture2D ball_texture;

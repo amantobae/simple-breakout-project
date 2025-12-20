@@ -197,6 +197,9 @@ void draw_level()
     case 4:
         draw_image(level5_background_texture, 0, 0, screen_size.x, screen_size.y);
         break;
+    case 5:
+        draw_image(level6_background_texture, 0, 0, screen_size.x, screen_size.y);
+        break;
 
     default:
         ClearBackground(BLACK);

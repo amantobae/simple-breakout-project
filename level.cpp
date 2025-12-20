@@ -25,12 +25,24 @@ void load_level(const int offset)
     const size_t rows = levels[current_level_index].rows;
     const size_t columns = levels[current_level_index].columns;
     current_level_blocks = 0;
+
+    portal1_position = { -1, -1 };
+    portal2_position = { -1, -1 };
+    portal1_active = false;
+    portal2_active = false;
+
     current_level_data = new char[rows * columns];
     for (int row = 0; row < rows; ++row) {
         for (int column = 0; column < columns; ++column) {
             current_level_data[row * columns + column] = levels[current_level_index].data[row * columns + column];
             if (current_level_data[row * columns + column] == BLOCKS) {
                 ++current_level_blocks;
+            } else if (current_level_data[row * columns + column] == PORTAL1) {
+                portal1_position = { static_cast<float>(column), static_cast<float>(row) };
+                portal1_active = true;
+            } else if (current_level_data[row * columns + column] == PORTAL2) {
+                portal2_position = { static_cast<float>(column), static_cast<float>(row) };
+                portal2_active = true;
             }
         }
     }

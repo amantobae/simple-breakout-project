@@ -179,6 +179,61 @@ void draw_ui()
     }
 }
 
+void draw_portals()
+{
+    if (portal1_active) {
+        const float texture_x_pos = shift_to_center.x + portal1_position.x * cell_size;
+        const float texture_y_pos = shift_to_center.y + portal1_position.y * cell_size;
+
+        float pulse = std::sin(game_frame * 0.1f) * 0.1f + 1.0f;
+        float portal_size = cell_size * 0.8f * pulse;
+
+        DrawCircle(
+            texture_x_pos + cell_size / 2,
+            texture_y_pos + cell_size / 2,
+            portal_size / 2,
+            ColorAlpha(PURPLE, 0.7f));
+        DrawCircleLines(
+            texture_x_pos + cell_size / 2,
+            texture_y_pos + cell_size / 2,
+            portal_size / 2,
+            WHITE);
+        DrawTextEx(
+            menu_font,
+            "A",
+            { texture_x_pos + cell_size / 4, texture_y_pos + cell_size / 4 },
+            cell_size / 2,
+            0,
+            WHITE);
+    }
+
+    if (portal2_active) {
+        const float texture_x_pos = shift_to_center.x + portal2_position.x * cell_size;
+        const float texture_y_pos = shift_to_center.y + portal2_position.y * cell_size;
+
+        float pulse = std::sin(game_frame * 0.1f + 3.14f) * 0.1f + 1.0f;
+        float portal_size = cell_size * 0.8f * pulse;
+
+        DrawCircle(
+            texture_x_pos + cell_size / 2,
+            texture_y_pos + cell_size / 2,
+            portal_size / 2,
+            ColorAlpha(BLUE, 0.7f));
+        DrawCircleLines(
+            texture_x_pos + cell_size / 2,
+            texture_y_pos + cell_size / 2,
+            portal_size / 2,
+            WHITE);
+        DrawTextEx(
+            menu_font,
+            "B",
+            { texture_x_pos + cell_size / 4, texture_y_pos + cell_size / 4 },
+            cell_size / 2,
+            0,
+            WHITE);
+    }
+}
+
 void draw_level()
 {
     switch (current_level_index) {
@@ -223,6 +278,12 @@ void draw_level()
                 break;
             case MULTIBALL_BLOCK:
                 draw_image(multi_ball_texture, texture_x_pos, texture_y_pos, cell_size);
+                break;
+            case PORTAL1:
+                draw_image(portal1_texture, texture_x_pos, texture_y_pos, cell_size);
+                break;
+            case PORTAL2:
+                draw_image(portal2_texture, texture_x_pos, texture_y_pos, cell_size);
                 break;
             default:;
             }

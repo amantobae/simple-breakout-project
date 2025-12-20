@@ -11,6 +11,11 @@ inline level current_level;
 inline size_t current_level_blocks;
 inline size_t current_level_index = 0;
 
+inline Vector2 portal1_position = { -1, -1 };
+inline Vector2 portal2_position = { -1, -1 };
+inline bool portal1_active = false;
+inline bool portal2_active = false;
+
 void load_level(int offset = 0);
 void unload_level();
 

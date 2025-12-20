@@ -218,6 +218,9 @@ void draw_level()
             case HEART_BLOCK:
                 draw_image(heart_block_texture, texture_x_pos, texture_y_pos, cell_size);
                 break;
+            case MULTIBALL_BLOCK:
+                draw_image(multi_ball_texture, texture_x_pos, texture_y_pos, cell_size);
+                break;
             default:;
             }
         }
@@ -231,11 +234,16 @@ void draw_paddle()
     draw_image(paddle_texture, texture_x_pos, texture_y_pos, paddle_size.x * cell_size, paddle_size.y * cell_size);
 }
 
-void draw_ball()
+void draw_balls()
 {
-    const float texture_x_pos = shift_to_center.x + ball_pos.x * cell_size;
-    const float texture_y_pos = shift_to_center.y + ball_pos.y * cell_size;
-    draw_image(ball_texture, texture_x_pos, texture_y_pos, cell_size);
+    for (int i = 0; i < max_balls; i++) {
+        if (!balls[i].active)
+            continue;
+
+        const float texture_x_pos = shift_to_center.x + balls[i].pos.x * cell_size;
+        const float texture_y_pos = shift_to_center.y + balls[i].pos.y * cell_size;
+        draw_image(ball_texture, texture_x_pos, texture_y_pos, cell_size);
+    }
 }
 
 void draw_pause_menu()

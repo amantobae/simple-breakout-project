@@ -56,8 +56,8 @@ void update()
     if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) {
         move_paddle(paddle_speed);
     }
-    move_ball();
-    if (!is_ball_inside_level()) {
+    move_balls();
+    if (!is_any_ball_inside_level()) {
         --player_lives;
         if (player_lives <= 0) {
             player_lives = max_lives;
@@ -89,7 +89,7 @@ void draw()
     } else if (game_state == in_game_state) {
         draw_level();
         draw_paddle();
-        draw_ball();
+        draw_balls();
         draw_ui();
     } else {
         std::cout << "Unknown state";

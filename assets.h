@@ -21,6 +21,8 @@ inline Texture2D ball_texture;
 inline Texture2D block_texture;
 inline Texture2D heart_texture;
 inline Texture2D heart_block_texture;
+inline Texture2D multi_ball_texture;
+
 
 inline sprite ball_sprite;
 

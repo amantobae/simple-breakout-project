@@ -28,6 +28,7 @@ void load_textures()
     ball_texture = LoadTexture("data/images/ball.png");
     heart_texture = LoadTexture("data/images/heart.png");
     heart_block_texture = LoadTexture("data/images/heart_block.png");
+    multi_ball_texture = LoadTexture("data/images/multi_ball.png");
 }
 
 void unload_textures()
@@ -46,6 +47,7 @@ void unload_textures()
     UnloadTexture(heart_texture);
     UnloadTexture(heart_block_texture);
     UnloadTexture(game_over_background_texture);
+    UnloadTexture(multi_ball_texture);
 }
 
 void load_sounds()

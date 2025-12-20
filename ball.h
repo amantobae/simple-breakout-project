@@ -9,7 +9,7 @@ struct Ball {
     bool active;
 };
 
-constexpr float ball_launch_angle_degrees = 45.0f;
+constexpr float ball_launch_angle_degrees = 50.0f;
 constexpr float ball_launch_vel_mag = 0.14f;
 constexpr int max_balls = 10;
 

@@ -62,10 +62,14 @@ void load_sounds()
     theme_song = LoadMusicStream("data/sounds/song.mp3");
     theme_song.looping = true;
     SetMusicVolume(theme_song, 0.5f);
-    PlayMusicStream(theme_song);
 
     win_sound = LoadSound("data/sounds/win.wav");
     lose_sound = LoadSound("data/sounds/lose.wav");
+    game_over_sound = LoadSound("data/sounds/game_over.wav");
+    victory_sound = LoadSound("data/sounds/victory.wav");
+    new_balls_sound = LoadSound("data/sounds/new_balls.wav");
+    heart_sound = LoadSound("data/sounds/heart.wav");
+    portal_sound = LoadSound("data/sounds/portal.wav");
 }
 
 void unload_sounds()
@@ -73,5 +77,11 @@ void unload_sounds()
     UnloadMusicStream(theme_song);
     UnloadSound(win_sound);
     UnloadSound(lose_sound);
+    UnloadSound(game_over_sound);
+    UnloadSound(victory_sound);
+    UnloadSound(new_balls_sound);
+    UnloadSound(heart_sound);
+    UnloadSound(portal_sound);
+
     CloseAudioDevice();
 }

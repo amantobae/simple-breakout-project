@@ -9,7 +9,7 @@
 #include <cmath>
 #include <numbers>
 
-inline float teleport_cooldown[max_balls] = {0};
+inline float teleport_cooldown[max_balls] = { 0 };
 
 void spawn_ball()
 {
@@ -81,33 +81,33 @@ void move_balls()
             float portal_radius = 0.4f;
 
             if (CheckCollisionCircles(
-                {balls[i].pos.x + 0.5f, balls[i].pos.y + 0.5f},
-                ball_size.x / 2.0f,
-                {portal1_position.x + 0.5f, portal1_position.y + 0.5f},
-                portal_radius
-            )) {
+                    { balls[i].pos.x + 0.5f, balls[i].pos.y + 0.5f },
+                    ball_size.x / 2.0f,
+                    { portal1_position.x + 0.5f, portal1_position.y + 0.5f },
+                    portal_radius)) {
                 balls[i].pos = portal2_position;
 
                 balls[i].pos.x += 0.1f;
                 balls[i].pos.y += 0.1f;
 
                 teleport_cooldown[i] = 0.3f;
+                PlaySound(portal_sound);
 
                 continue;
             }
 
             if (CheckCollisionCircles(
-                {balls[i].pos.x + 0.5f, balls[i].pos.y + 0.5f},
-                ball_size.x / 2.0f,
-                {portal2_position.x + 0.5f, portal2_position.y + 0.5f},
-                portal_radius
-            )) {
+                    { balls[i].pos.x + 0.5f, balls[i].pos.y + 0.5f },
+                    ball_size.x / 2.0f,
+                    { portal2_position.x + 0.5f, portal2_position.y + 0.5f },
+                    portal_radius)) {
                 balls[i].pos = portal1_position;
 
                 balls[i].pos.x += 0.1f;
                 balls[i].pos.y += 0.1f;
 
                 teleport_cooldown[i] = 0.3f;
+                PlaySound(portal_sound);
 
                 continue;
             }
@@ -140,6 +140,7 @@ void move_balls()
             if (player_lives > 3) {
                 player_lives = 3;
             }
+            PlaySound(heart_sound);
         } else if (is_colliding_with_level_cell(next_ball_pos, ball_size, MULTIBALL_BLOCK)) {
             char& temp = get_colliding_level_cell(next_ball_pos, ball_size, MULTIBALL_BLOCK);
 
@@ -156,6 +157,7 @@ void move_balls()
 
             add_ball(balls[i].pos);
             add_ball(balls[i].pos);
+            PlaySound(new_balls_sound);
         } else if (is_colliding_with_level_cell(next_ball_pos, ball_size, BLOCKS)) {
             char& temp = get_colliding_level_cell(next_ball_pos, ball_size, BLOCKS);
 

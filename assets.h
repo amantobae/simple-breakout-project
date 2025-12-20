@@ -26,12 +26,16 @@ inline Texture2D multi_ball_texture;
 inline Texture2D portal1_texture;
 inline Texture2D portal2_texture;
 
-
 inline sprite ball_sprite;
 
 inline Music theme_song;
 inline Sound win_sound;
 inline Sound lose_sound;
+inline Sound victory_sound;
+inline Sound new_balls_sound;
+inline Sound heart_sound;
+inline Sound game_over_sound;
+inline Sound portal_sound;
 
 void load_fonts();
 void unload_fonts();

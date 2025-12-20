@@ -8,15 +8,17 @@
 #include "raylib.h"
 
 #include <iostream>
-
 void update()
 {
-    UpdateMusicStream(theme_song);
+    if (game_state == in_game_state) {
+        UpdateMusicStream(theme_song);
+    }
 
     if (game_state == menu_state) {
         if (IsKeyPressed(KEY_ENTER)) {
             player_lives = max_lives;
             game_state = in_game_state;
+            PlayMusicStream(theme_song);
         }
         return;
     }
@@ -26,12 +28,16 @@ void update()
         }
         if (IsKeyPressed(KEY_ESCAPE)) {
             game_state = menu_state;
+            StopMusicStream(theme_song);
         }
         return;
     }
     if (game_state == game_over_state) {
         if (IsKeyPressed(KEY_ENTER)) {
+            player_lives = max_lives;
+            load_level(0);
             game_state = in_game_state;
+            PlayMusicStream(theme_song);
         }
         if (IsKeyPressed(KEY_ESCAPE)) {
             game_state = menu_state;
@@ -43,12 +49,12 @@ void update()
             player_lives = max_lives;
             load_level(0);
             game_state = in_game_state;
+            PlayMusicStream(theme_song);
         }
         return;
     }
     if (IsKeyPressed(KEY_E)) {
         game_state = paused_state;
-        draw_pause_menu();
     }
     if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) {
         move_paddle(-paddle_speed);
@@ -63,15 +69,22 @@ void update()
             player_lives = max_lives;
             load_level(0);
             game_state = game_over_state;
-            PlaySound(lose_sound);
+            StopMusicStream(theme_song);
+            PlaySound(game_over_sound);
         } else {
             load_level();
             PlaySound(lose_sound);
         }
 
     } else if (current_level_blocks == 0) {
-        load_level(1);
-        PlaySound(win_sound);
+        if (current_level_index >= level_count - 1) {
+            game_state = victory_state;
+            StopMusicStream(theme_song);
+            PlaySound(victory_sound);
+        } else {
+            load_level(1);
+            PlaySound(win_sound);
+        }
     }
 }
 

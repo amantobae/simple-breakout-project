@@ -45,6 +45,7 @@ void update()
     if (game_state == victory_state) {
         if (IsKeyPressed(KEY_ENTER)) {
             player_lives = max_lives;
+            current_level_index = 0;
             load_level(0);
             game_state = in_game_state;
             PlayMusicStream(theme_song);

@@ -40,6 +40,12 @@ void update()
             game_state = in_game_state;
             PlayMusicStream(theme_song);
         }
+        if (IsKeyPressed(KEY_E)) {
+            player_lives = max_lives;
+            current_level_index = 0;
+            load_level(0);
+            game_state = menu_state;
+        }
         return;
     }
     if (game_state == victory_state) {

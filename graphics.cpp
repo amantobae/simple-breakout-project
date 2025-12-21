@@ -23,7 +23,6 @@ struct Text {
 constexpr float cell_scale = 0.6f;
 constexpr float screen_scale_divisor = 700.0f;
 
-
 Vector2 screen_size;
 float screen_scale;
 float cell_size;
@@ -169,47 +168,6 @@ void draw_ui()
     for (int i = 0; i < player_lives; i++) {
         float x = hearts_start_x + i * (heart_size + heart_spacing);
         draw_image(heart_texture, x, hearts_y, heart_size);
-    }
-}
-
-void draw_portals()
-{
-    if (portal1_active) {
-        const float texture_x_pos = shift_to_center.x + portal1_position.x * cell_size;
-        const float texture_y_pos = shift_to_center.y + portal1_position.y * cell_size;
-
-        float pulse = std::sin(game_frame * 0.1f) * 0.1f + 1.0f;
-        float portal_size = cell_size * 0.8f * pulse;
-
-        DrawCircle(
-            texture_x_pos + cell_size / 2,
-            texture_y_pos + cell_size / 2,
-            portal_size / 2,
-            ColorAlpha(PURPLE, 0.7f));
-        DrawCircleLines(
-            texture_x_pos + cell_size / 2,
-            texture_y_pos + cell_size / 2,
-            portal_size / 2,
-            WHITE);
-    }
-
-    if (portal2_active) {
-        const float texture_x_pos = shift_to_center.x + portal2_position.x * cell_size;
-        const float texture_y_pos = shift_to_center.y + portal2_position.y * cell_size;
-
-        float pulse = std::sin(game_frame * 0.1f + 3.14f) * 0.1f + 1.0f;
-        float portal_size = cell_size * 0.8f * pulse;
-
-        DrawCircle(
-            texture_x_pos + cell_size / 2,
-            texture_y_pos + cell_size / 2,
-            portal_size / 2,
-            ColorAlpha(BLUE, 0.7f));
-        DrawCircleLines(
-            texture_x_pos + cell_size / 2,
-            texture_y_pos + cell_size / 2,
-            portal_size / 2,
-            WHITE);
     }
 }
 

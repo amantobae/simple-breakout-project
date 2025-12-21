@@ -35,12 +35,10 @@ void update()
     if (game_state == game_over_state) {
         if (IsKeyPressed(KEY_ENTER)) {
             player_lives = max_lives;
+            current_level_index = 0;
             load_level(0);
             game_state = in_game_state;
             PlayMusicStream(theme_song);
-        }
-        if (IsKeyPressed(KEY_ESCAPE)) {
-            game_state = menu_state;
         }
         return;
     }

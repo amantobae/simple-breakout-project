@@ -16,6 +16,9 @@ inline Vector2 portal2_position = { -1, -1 };
 inline bool portal1_active = false;
 inline bool portal2_active = false;
 
+inline int player_lives = 3;
+inline constexpr int max_lives = 3;
+
 void load_level(int offset = 0);
 void unload_level();
 

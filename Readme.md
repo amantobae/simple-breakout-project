@@ -1,170 +1,255 @@
-# Simple Breakout
+# 🚀 Breakout: In Space
 
-![Breakout](https://i.postimg.cc/FzBNx6FK/Screenshot-20251103-175907.png)
+A modern reimagining of the classic Breakout arcade game with a cosmic twist! Navigate through space-themed levels,
+collect power-ups, and master portal mechanics in this fast-paced brick-breaking adventure.
 
----
+![Game Theme](https://img.shields.io/badge/Theme-Space-blue)
+![Language](https://img.shields.io/badge/Language-C%2B%2B-orange)
+![Framework](https://img.shields.io/badge/Framework-Raylib-green)
 
-The primary goal of this project is to build a simple [Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game))
-game written in C++ using the [raylib](https://www.raylib.com) graphics library. In this game, the player controls a
-paddle that keeps the ball within the level, which destroys blocks upon contact. The objective of the game is to
-navigate through a series of levels, cleaning all levels of blocks.
+## 🎮 Game Overview
 
-The game should adhere to the best structured and procedural programming principles. You should strive to effectively
-utilize structured programming constructs such as selection constructs and loops. Additionally, endeavor to achieve
-procedural decomposition of your code into functions. Ensure consistent formatting in your code, adhering to coding
-style best practices, including proper naming, indentation, use of white spaces, blank lines, and comments.
+**Breakout: In Space** is a space-themed arcade game where you control a UFO paddle to bounce a ball and destroy blocks
+across 6 challenging levels. Each level introduces new mechanics and obstacles, culminating in an epic final boss level.
 
-Be creative, and ensure to implement all the requirements outlined below in your project.
+### 🌟 Theme
 
----
+- **Setting:** Deep space with cosmic backgrounds
+- **Visual Style:** Retro pixel art meets modern space aesthetics
+- **Atmosphere:** Vibrant space stars, planets and galaxies
 
-## Core Requirements
+## ✨ Features
 
-* **Title or Menu Screen**: The game should start with a title screen featuring a game logo and a message to start the
-  game. Alternatively, it could be a menu screen with options to start the game, view the instructions, or quit the
-  game.
+### Core Gameplay
 
-![Title Screen](https://i.postimg.cc/ZRXBRS8N/Screenshot-20251029-161437.png)
+- **Classic Breakout Mechanics** - Bounce the ball with your UFO paddle to destroy blocks
+- **6 Progressive Levels** - Difficulty increases from tutorial to final boss
+- **Multiple Balls System** - Support for up to 10 simultaneous balls on screen
+- **3 Lives System** - Visual hearts display remaining lives
 
-* **Game Screen**: From the title or menu screen, the player should be able to start the game. The game screen displays
-  the paddle, the ball, and the level. The player moves the paddle using the keyboard. The goal is to move from one
-  level to the next by destroying all the blocks in every level. In our game, the objective of the player is to reach
-  the end by passing through all the levels.
+### 🎯 Power-Up Blocks
 
-![Game Screen, Level 2](https://i.postimg.cc/FzBNx6FK/Screenshot-20251103-175907.png)
+#### ❤️ Heart Block (H)
 
-* **Pause Screen**: The player should be able to pause the game by pressing the Escape key. A 'Pause' screen appears
-  with an option to resume the game. Pressing the Escape key resumes the game.
+<div align="left">
+<img src="data/images/heart_block.png" width= 150 alt="Heart Block">
+</div>
 
-![Pause Screen](https://i.postimg.cc/Gt5djf3h/Screenshot-20251103-175849.png)
+- **Effect:** Grants +1 life
+- **Cap:** Maximum 3 lives
+- **Visual:** Red heart block
+- **Sound:** Special heart pickup sound
 
-* **Victory Screen**: Upon passing through all the levels, a victory screen displays a congratulatory message, allowing
-  the player to return to the title screen. Some animation, possibly from lab class exercises, should play in the
-  background to indicate the game's completion. You are at liberty to come up with the animation.
+#### ⚽ Multiball Block (M)
 
-![Victory Screen](https://i.postimg.cc/CL5KfGhW/Screenshot-20251103-175933.png)
+<div align="left">
+<img src="data/images/multi_ball.png" width= 150 alt="Heart Block">
+</div>
 
-## Additional Requirements
+- **Effect:** Spawns 2 additional balls
+- **Mechanic:** New balls launch at 50° angles in opposite directions
+- **Visual:** Yellow multiball block
+- **Sound:** Ball spawn sound effect
 
-* **Additional Levels**: Add at least *three extra levels* to the game. These levels should be more challenging than the
-  ones given. You may add more levels if you want.
+#### 🌀 Portal System (A/B)
 
-* **Additional Game Elements**: Introduce at least *three new elements* to the game. These could include collectibles,
-  moving obstacles, additional balls, turning the game 3-D, special time events, portals, more advanced bounce-off
-  physics, improved collision detecion, or other modifications to the gameplay. Let your creativity guide you.
+<div align="left">
+<img src="data/images/portal1.png" width= 150 alt="Heart Block">
+<img src="data/images/portal2.png" width= 150 alt="Heart Block">
+</div>
 
-* **Game Over Screen**: Implement *a 'Game Over' screen* that displays a message when the player loses the game, such as
-  when the player runs out of lives or the ball leaves the level. This screen should allow the player to return to the
-  title screen or try again.
+- **Effect:** Teleportation between two portals
+- **Mechanic:**
+    - Enter Portal A → Exit from Portal B
+    - Enter Portal B → Exit from Portal A
+    - 0.3 second cooldown to prevent infinite loops
+- **Visual:** Purple and blue portal textures
+- **Sound:** 8-bit teleportation sound
 
-* **Additional Sounds**: Add at least *three new sounds* to the game. These sounds could accompany actions like bouncing
-  off obstacles, picking up collectibles, or exiting the final level.
+### 🧱 Game Elements
 
-* **Background Music**: Incorporate at least *one music track* into the game. This track should play on at least one of
-  the screens. Ensure the track is royalty-free or that you have usage rights. Store the music files in the
-  `data/music/` directory and keep them reasonably sized.
+- **Regular Blocks (@)**
+- **Wall Blocks (#)**
+- **Invisible Boundaries (!)**
+- **UFO Paddle (P)**
+- **Heart Block (H)**
+- **Multi Ball Block (M)**
+- **Portal1 (A)**
+- **Portal2 (B)**
 
-## Practical Requirements
+### 🎵 Audio System
 
-* Develop the code **independently of your peers** and maintain a **detailed project commit history**. Be aware that
-  points will be withheld for any suspicion of code plagiarism, even if it's unfounded. Additionally, consistent
-  progress must be evident in your project commit history to receive any points at all.
+- **Background Music** - Looping space-themed soundtrack
+- **Sound Effects:**
+    - Level completion
+    - Life loss
+    - Game over
+    - Victory celebration
+    - Heart pickup
+    - Multiball spawn
+    - Portal teleportation
 
-* Rewrite the `Readme.md` file with a description of your game and a list of the features that you have implemented. *
-  *Note that partially implementing some features is preferable to not implementing any.**
+### 🎨 Visual Effects
 
-* Ensure that the game is playable and contains all necessary files. **It should be straightforward for the instructor
-  to set up and start the game with minimal effort.**
+- **Animated Menus** - Floating text on main menu and victory screen
+- **Victory Confetti** - 100 colorful confetti particles celebrating victory
+- **Multiple Backgrounds** - 6+ unique space-themed backgrounds
+- **Smooth Animations** - 60 FPS gameplay
 
-## Deliverables
+### 🎮 Controls
 
-* Develop the game within the `<repository>` directory. This directory should include a `data/` subdirectory containing
-  all game assets (images, sprites, fonts, sounds, etc.).
+| Key       | Action                        |
+|-----------|-------------------------------|
+| **←**     | Move paddle left              |
+| **→**     | Move paddle right             |
+| **E**     | Pause game                    |
+| **Enter** | Start game / Resume / Restart |
 
-* Organize your code into `.h` and `.cpp` files. Each file should contain related constants, variables, and functions.
+### 📊 Level Design
 
-* Place your main game loop into the `breakout.cpp` file.
+#### Level 1: Tutorial 🟢
 
-Upon completion, your Project directory should have an organized structure similar to the following example:
+**Size:** 9x13 (compact)  
+**Blocks:** 9 regular blocks  
+**Power-ups:** None  
+**Obstacles:** None  
+**Layout:** Simple diamond formation in the center  
+**Difficulty:** ⭐ (Very Easy)
+
+#### Level 2: Hearts & Multiball 🟡
+
+**Size:** 13x13 (medium)  
+**Blocks:** 28 blocks  
+**Power-ups:** 1 Heart (H), 1 Multiball (M)  
+**Obstacles:** None  
+**Layout:** Heart-shaped formation with power-ups at key positions  
+**Difficulty:** ⭐⭐ (Easy)
+
+#### Level 3: Portal Maze 🟠
+
+**Size:** 13x13 (medium)  
+**Blocks:** 24 blocks  
+**Power-ups:** 2 Hearts (H), 2 Multiballs (M), 2 Portals (A/B)  
+**Obstacles:** 4 Wall blocks forming a cross pattern  
+**Layout:** Symmetrical cross pattern with walls dividing the field  
+**Difficulty:** ⭐⭐⭐ (Medium)
+
+#### Level 4: The Diamond Fortress 🔴
+
+**Size:** 13x13 (medium)  
+**Blocks:** 25 blocks  
+**Power-ups:** 1 Heart (H), 2 Multiballs (M), 2 Portals (A/B)  
+**Obstacles:** None  
+**Layout:** Diamond/checkerboard pattern with strategic portal placement  
+**Difficulty:** ⭐⭐⭐ (Medium-Hard)
+
+#### Level 5: The Castle 🟣
+
+**Size:** 17x16 (large)  
+**Blocks:** 53 blocks  
+**Power-ups:** 1 Heart (H), 5 Multiballs (M), 2 Portals (A/B)  
+**Obstacles:** 4 Wall blocks protecting the heart  
+**Layout:** Rectangular castle structure with protected core  
+**Difficulty:** ⭐⭐⭐⭐ (Hard)
+
+#### Level 6: The Final Challenge ⚫
+
+**Size:** 15x15 (large)  
+**Blocks:** 36 blocks  
+**Power-ups:** 2 Hearts (H), 2 Multiballs (M), 2 Portals (A/B)  
+**Obstacles:** 3 Wall blocks forming a vertical barrier  
+**Layout:** Symmetrical mirrored design split by a wall  
+**Difficulty:** ⭐⭐⭐⭐⭐ (Very Hard)
+
+### 🏗️ Technical Features
+
+- **Collision Detection:** Precise rectangle-based collision system
+- **Physics:** Realistic ball bouncing with velocity management
+- **State Machine:** Clean game state management (Menu, Playing, Paused, Victory, Game Over)
+- **Architecture:** Separated concerns (ball, paddle, level, graphics, assets)
+
+## 🛠️ Technology Stack
+
+- **Language:** C++17
+- **Graphics Library:** Raylib
+- **Build System:** CMake/Make
+
+## 📁 Project Structure
 
 ```
-.
-└── <repository>
-    ├── data
-    │   ├── fonts
-    │   │   └── ...
-    │   ├── images
-    │   │   └── ...
-    │   ├── music
-    │   │   └── ...
-    │   └── sounds
-    │       └── ...
-    ├── breakout.cpp
-    ├── game.h
-    ├── <various header and C++ files>.h/cpp
-    ├── ... (.idea, .gitignore, .clang-format, CMakeLists.txt, other files)
-    └── Readme.md
+breakout/
+├── breakout.cpp              
+├── ball.cpp & ball.h         
+├── paddle.cpp & paddle.h     
+├── level.cpp & level.h       
+├── graphics.cpp & graphics.h 
+├── assets.cpp & assets.h     
+├── sprite.cpp & sprite.h     
+├── game.h                    
+└── data/
+    ├── fonts/
+    │   └── LCDSolid1.13-Regular.TTF
+    ├── images/
+    │   ├── backgrounds/
+    │   │   ├── menu_background.png
+    │   │   ├── game_over_background.png
+    │   │   ├── level_background.png
+    │   │   ├── level2_background.png
+    │   │   ├── level3_background.png
+    │   │   ├── level4_background.png
+    │   │   ├── level5_background.png
+    │   │   └── level6_background.png
+    │   ├── ball.png
+    │   ├── paddle.png
+    │   ├── block.png
+    │   ├── wall.png
+    │   ├── heart.png
+    │   ├── heart_block.png
+    │   ├── multi_ball.png
+    │   ├── portal1.png
+    │   └── portal2.png
+    └── sounds/
+        ├── song.mp3
+        ├── win.wav
+        ├── lose.wav
+        ├── game_over.wav
+        ├── victory.wav
+        ├── heart.wav
+        ├── new_balls.wav
+        └── portal.wav
 ```
 
-[Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) our
-repository first, then clone it. If you skip this step, you will not be able to push your changes. Commit regularly,
-such as after implementing a feature (ensure the program is in a compilable state).
+## 🏆 Victory Condition
 
----
+Complete all 6 levels by destroying every destructible block. Watch the spectacular confetti celebration and restart to
+challenge yourself again!
 
-## Project Setup Notes
+## 💀 Game Over Condition
 
-Set up the raylib project as you have done in previous labs for graphical assignments.
+Lose all 3 lives by letting balls fall off the bottom of the screen. You can retry the current level or return to the
+main menu.
 
-Before attempting to run the code for the `breakout` target, please ensure that you set the `Working directory`
-correctly in your CLion IDE.
+## 🎨 Art Style
 
-The current working directory must point to the directory containing the necessary resource files (e.g., `data/images/`,
-`data/fonts/`, and `data/sound|music/`). Failure to do so will result in these resources not being loaded properly, and
-you will not see or hear the intended visuals or sounds in the game.
+- **Paddle:** Retro pixel art UFO/flying saucer
+- **Ball:** Brown meteorite
+- **Blocks:** Space metallic blocks
+- **Backgrounds:** space pixel background images
+- **UI:** LCD-style retro font (LCDSolid)
 
-To set the working directory:
+## 🔊 Sound Design
 
-1. Open the `Run` menu and find the `Edit configurations` button there in CLion.
-2. Select the `breakout` target.
-3. Locate the `Working directory` field.
-4. Set it to the `$ProjectFileDir$` value (this ensures it points to the root project directory with the `data` folder).
-5. Save your configuration and run the target again.
+All sounds are carefully selected to match the space theme:
 
-If you encounter any issues, double-check that the paths to the resource files are correct relative to the working
-directory.
+- 8-bit Sci-fi inspired sound effects
+- Atmospheric background music
+- Clear audio feedback for all actions
 
-## Implementation Tips
+## 📝 Credits
 
-- Read the raylib [cheatsheet](https://www.raylib.com/cheatsheet/cheatsheet.html) to discover what is possible.
-- Explore the raylib [examples](https://www.raylib.com/examples.html) for inspiration.
-- Spend time searching for ways to break your program: that will help you eliminate edge cases and bugs.
-- Log values and verify their correctness if stumbling across a bug.
-- Use compilation and linking errors to your advantage: _read_ them.
-- Use the debug tool to resolve crashes.
+**Developer:** [Amantai Toktosunov]  
+**Framework:** Raylib
+**Font:** LCDSolid1.13-Regular  
+**Inspiration:** Classic Breakout
 
-## Deadline
-
-Refer to the specific course or assignment page on Moodle for detailed information about deadlines and the grading
-rubric.
-
-## Links
-
-### raylib
-
-* [Wiki](https://github.com/raysan5/raylib/wiki)
-* [Cheatsheet](https://www.raylib.com/cheatsheet/cheatsheet.html)
-* [Examples](https://www.raylib.com/examples.html)
-
-### Tools
-
-* [libresprite](https://libresprite.github.io/#!/)
-* [jsfxr](https://sfxr.me/)
-
-## Books
-
-* Introduction to Programming with C++, 3rd Edition by Daniel Liang
-
-## Credits
-
-* [Luna Maltseva](https://github.com/lunamaltseva)
+**Enjoy breaking blocks in space! 🌌⚡🎮**

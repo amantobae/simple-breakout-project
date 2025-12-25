@@ -245,6 +245,81 @@ All sounds are carefully selected to match the space theme:
 - Atmospheric background music
 - Clear audio feedback for all actions
 
+# 📦 Project Launch Instructions
+
+## Quick Start (Pre-Built Version)
+
+## Running from Source
+
+### Requirements:
+
+- A C++ compiler (g++, clang, or MSVC) installed
+- Raylib installed
+- CMake installed
+
+### Steps:
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/amantobae/simple-breakout-project
+cd breakout-in-space
+```
+
+2. **Build the project:**
+
+```bash
+mkdir build
+cd build
+cmake ..
+make # or mingw32-make on Windows
+```
+
+3. **Run the game:**
+
+```bash
+./breakout # Linux/macOS
+# or
+breakout.exe # Windows
+```
+
+## Running in an IDE (CLion, etc.)
+
+1. Open the project folder in your IDE
+2. Use built-in CMake support to build
+3. Run the `breakout` target
+
+## ⚡ Quick Start
+
+If you already have all dependencies installed:
+
+```bash
+# 1. Clone
+git clone https://github.com/amantobae/simple-breakout-project
+
+# 2. Go to the folder
+cd breakout-in-space
+
+# 3. Build
+mkdir build && cd build
+cmake .. && make
+
+# 4. Run
+./breakout
+```
+
+## 🎮 Game Controls
+
+## ❓ Help
+
+If the game doesn't launch, make sure that:
+
+- All files in the `data/` folder are present
+- You have installed all the necessary libraries
+- You are running the game from the correct directory
+
+For questions, create an issue in the project repository!
+
 ## 📝 Credits
 
 **Developer:** [Amantai Toktosunov]  
